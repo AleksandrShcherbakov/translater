@@ -11,7 +11,7 @@ public class TranslaterApplication {
 
 	public static void main(String[] args) throws IOException, SocketTimeoutException {
 		//SpringApplication.run(TranslaterApplication.class, args);
-		System.out.println(Helper.createTranscriptionAndTranslate("warms"));
+		System.out.println(Helper.createTranscriptionAndTranslate("1995"));
 		//Set<String> stringSet = XmlFb2.createStringSet("C://111.fb2");
 		String str = "From about 1930 until very recent times the cinema enjoyed great popularity in Britain. The first cinemas were the most impressive buildings in the street of many towns. Later, the rapid spread of television brought a great change. The number of cinema -goers dropped and, as a result, 1,500 cinemas were closed. Many of the films were mostly imported from America. Some films were shot in Britain and often directed by British directors, but with American money. The British cinematography was not able to provide the cinema houses with films of its own production.\n" +
 				"\n" +
@@ -24,7 +24,7 @@ public class TranslaterApplication {
 				"There are many amateur orchestras, choirs and opera groups even in small county towns. The best players are chosen to play in the county youth orchestras, and a few of the very best may be picked for the National Youth Orchestra. This orchestra is trained by distinguished conductors. It plays in the Royal Festival Hall and in other big concert halls. British people are fond of art and visit international and national music and drama festivals held in their country.";
 		Set<String> res = StringToFile.createStringSet(str);
 		for (String s : res){
-			System.out.println(s);
+			System.out.println(Helper.createTranscriptionAndTranslate(s));
 		}
 		//Helper.writeFile(res,"C://words.txt");
 	}

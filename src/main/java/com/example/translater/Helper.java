@@ -27,10 +27,19 @@ public class Helper {
     public static String createTranscriptionAndTranslate(String word) throws IOException {
         try {
             Connection connection = Jsoup.connect("https://wooordhunt.ru/word/" + word);
-
             connection.timeout(10 * 1000);
             Document doc = connection.get();
-
+            Element wd_title = doc.getElementById("wd_title");
+            if (wd_title!=null && wd_title.text().startsWith("Welcome")){
+                return "";
+            }
+            Element wordNotFound = doc.getElementById("word_not_found");
+            if (wordNotFound != null) {
+                Elements possible = doc.getElementsByClass("possible_variant");
+                if (possible.size() > 0) {
+                    return createTranscriptionAndTranslate(possible.get(0).text());
+                }
+            }
             Element element1 = doc.getElementById("word_forms");
             String adition = "";
             if (element1 != null) {
